@@ -1,0 +1,99 @@
+/* Seller Banner Styles */
+.seller-banner-section {
+  padding: 4rem 0 6rem 0;
+  background-color: #ffffff;
+}
+
+.banner-card {
+  padding: 3.5rem 2.5rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.25);
+}
+
+.banner-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.banner-content {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.banner-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+}
+
+.banner-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.banner-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.banner-benefits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.benefit-icon {
+  color: #818cf8;
+}
+
+.banner-cta {
+  padding: 1rem 2.2rem;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 2rem;
+  }
+  .banner-card {
+    padding: 2.5rem 1.5rem;
+  }
+}

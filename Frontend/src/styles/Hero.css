@@ -1,0 +1,382 @@
+/* ==========================================================================
+   Hero Styles - Grand Hero Curtain Reveal (Cyber Teal & Emerald Theme)
+   ========================================================================== */
+
+.hero-curtain-container {
+  position: relative;
+  width: 100%;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-curtain-container.curtain-fully-opened {
+  margin-bottom: 1rem;
+}
+
+/* Floating Control Bar */
+.curtain-control-bar {
+  position: relative;
+  z-index: 120;
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem 0.25rem 1.5rem;
+}
+
+.curtain-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: #06b6d4;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.curtain-toggle-btn:hover {
+  background: #06b6d4;
+  color: #ffffff;
+  border-color: #06b6d4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.35);
+}
+
+.spin-icon {
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Curtain Stage & 3D Wings
+   ========================================================================== */
+.hero-curtain-stage {
+  position: relative;
+  min-height: 80vh;
+  padding: 3rem 1.5rem 4rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1400px;
+  background-color: #f8fafc;
+  transition: max-height 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+}
+
+.curtain-glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 850px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(16, 185, 129, 0.1) 45%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Curtain Wings Left & Right */
+.curtain-wing {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  z-index: 5;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease 0.3s;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.curtain-wing-left {
+  left: 0;
+  background: linear-gradient(135deg, #040d1a 0%, #0c1c2e 50%, #061322 100%);
+  transform-origin: left center;
+}
+
+.curtain-wing-right {
+  right: 0;
+  background: linear-gradient(225deg, #040d1a 0%, #0c1c2e 50%, #061322 100%);
+  transform-origin: right center;
+}
+
+/* Folds Texture overlay */
+.curtain-fabric-folds {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 40px,
+    rgba(0, 0, 0, 0.3) 40px,
+    rgba(0, 0, 0, 0.3) 80px
+  );
+}
+
+.wing-gold-border {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #10b981, #06b6d4, #3b82f6);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.8);
+}
+
+.right-border { right: 0; }
+.left-border { left: 0; }
+
+/* 3D Curtain Opening Motion */
+.wing-slide-left {
+  transform: translateX(-108%) rotateY(-14deg) scale(0.94);
+  opacity: 0;
+}
+
+.wing-slide-right {
+  transform: translateX(108%) rotateY(14deg) scale(0.94);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   Hero Content Card (The Main Hero Banner Overlay)
+   ========================================================================== */
+.curtain-hero-card {
+  position: relative;
+  z-index: 10;
+  max-width: 860px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 36px;
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 25px 70px -10px rgba(15, 23, 42, 0.22), 0 0 40px rgba(6, 182, 212, 0.15);
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+}
+
+.curtain-hero-card.card-disappear {
+  transform: scale(0.85) translateY(-40px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(16, 185, 129, 0.1));
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: #0891b2;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.badge-sparkle {
+  color: #10b981;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  margin-bottom: 1.25rem;
+  color: #0f172a;
+}
+
+.hero-description {
+  font-size: 1.12rem;
+  color: #475569;
+  max-width: 660px;
+  margin-bottom: 2.25rem;
+  line-height: 1.65;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 0.95rem 2rem;
+  font-size: 1.02rem;
+  border-radius: 14px;
+}
+
+.curtain-open-trigger {
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+  transition: all 0.3s ease;
+}
+
+.curtain-open-trigger:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(6, 182, 212, 0.6);
+}
+
+.hero-trust-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 1.75rem;
+  width: 100%;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.trust-icon {
+  color: #06b6d4;
+}
+
+/* Interactive Curtain Pull Prompt */
+.curtain-pull-prompt {
+  margin-top: 2rem;
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.curtain-pull-prompt:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.4; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+  100% { transform: scale(0.95); opacity: 0.4; }
+}
+
+.prompt-badge {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.bounce-arrow {
+  animation: bounceDown 1.5s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Revealed Hero Minibar */
+.revealed-hero-minibar {
+  max-width: 1280px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0 1.5rem;
+  animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.minibar-content {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.94));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 0.9rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.minibar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.minibar-logo {
+  color: #06b6d4;
+}
+
+.minibar-tagline {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-description {
+    font-size: 1rem;
+  }
+  .curtain-hero-card {
+    padding: 2.25rem 1.5rem;
+  }
+  .minibar-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
