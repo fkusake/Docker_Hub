@@ -27,7 +27,7 @@ export default function FeaturedProducts() {
   return (
     <section id="featured" className="featured-section">
       <div className="container">
-        
+
         <div className="section-header-row">
           <div>
             <div className="section-badge">
@@ -57,7 +57,7 @@ export default function FeaturedProducts() {
               className={`filter-tab ${activeTab === 'used' ? 'active' : ''}`}
               onClick={() => setActiveTab('used')}
             >
-              🔄 Pre-Owned
+              🔄 Pre-Owneded
             </button>
           </div>
         </div>
@@ -72,11 +72,11 @@ export default function FeaturedProducts() {
                 className="product-card glass-panel cursor-pointer"
                 onClick={() => navigate(`/product/${product.id}`)}
               >
-                
+
                 {/* Card Image Wrapper */}
                 <div className="product-image-container">
                   <div className="product-emoji">{product.image}</div>
-                  
+
                   {/* Condition Tag */}
                   <span className={product.condition === 'new' ? 'badge-new pos-badge' : 'badge-used pos-badge'}>
                     {product.conditionLabel}
